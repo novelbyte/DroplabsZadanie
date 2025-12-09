@@ -16,7 +16,7 @@ export const Header = () => {
             </span>
           </Link>
 
-           <Link href="/" passHref>
+           <Link href="/products" passHref>
             <span className="text-white/70 text-xl xl:text-2xl font-bold pl-4 transform hover:text-white transition duration-150 cursor-pointer">
               PRODUCTS
             </span>
