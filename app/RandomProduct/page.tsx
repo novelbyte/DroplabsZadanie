@@ -2,17 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useCart } from '../cart/CartContext';
-
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-  rating: { rate: number; count: number };
-};
+import { useCart, Product } from '../cart/CartContext';
 
 export default function RandomProduct() {
   const [product, setProduct] = useState<Product | null>(null);
@@ -48,7 +38,12 @@ export default function RandomProduct() {
   return (
     <div className="bg-[#1e293b] p-6 rounded-lg shadow-lg max-w-md mx-auto mt-6 text-white flex flex-col items-center">
       <div className="relative h-64 w-full mb-4">
-        <Image src={product.image} alt={product.title} fill style={{ objectFit: 'contain' }} />
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          style={{ objectFit: 'contain' }}
+        />
       </div>
       <h2 className="text-xl font-bold mb-2">{product.title}</h2>
       <p className="text-white/70 mb-1">Kategoria: {product.category}</p>
@@ -78,7 +73,7 @@ export default function RandomProduct() {
       </div>
 
       <button
-        onClick={() => addToCart({ ...product, quantity })}
+        onClick={() => addToCart(product, quantity)}
         className="px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded font-bold"
       >
         Dodaj do koszyka
